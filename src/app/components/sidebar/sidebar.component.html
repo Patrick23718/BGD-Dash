@@ -1,0 +1,38 @@
+<div class="w-full h-screenn overflow-y-scrollss">
+  <div *ngFor="let item of menu">
+    <div
+      class="w-full flex flex-row justify-between border-2 border-gray-500 hover:cursor-pointer"
+      (click)="item.open = !item.open"
+    >
+      <div class="col-span-4 py-5 px-5 flex justify-center items-center">
+        <span class="text-center text-lg flex justify-center items-center"
+          >{{ item.title }}
+        </span>
+      </div>
+      <div class="col-span-1 border-l-2 border-gray-500 px-5 flex items-center">
+        <mat-icon
+          [color]="item.open ? 'primary' : ''"
+          class="text-lg transform"
+          style="animation: 1s linear infinite"
+          [ngClass]="item.open ? 'rotate-180' : ''"
+          >keyboard_arrow_down</mat-icon
+        >
+      </div>
+    </div>
+    <!-- <div class="border border-gray-500"></div> -->
+    <!-- <div *ngIf="item.open && item.sub.length > 0"></div> -->
+    <div
+      class="pl-10 py-3 space-y-3 text-lg"
+      *ngIf="item.open && item.sub.length > 0"
+    >
+      <div
+        *ngFor="let sub of item.sub"
+        [ngClass]="sub.open ? 'text-primary' : ''"
+        (click)="check(); sub.open = true"
+        class="hover:cursor-pointer"
+      >
+        {{ sub.title }}
+      </div>
+    </div>
+  </div>
+</div>

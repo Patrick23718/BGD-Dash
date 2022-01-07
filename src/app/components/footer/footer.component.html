@@ -1,0 +1,113 @@
+<div class="w-full bg-primary py-4 text-white px-10">
+  <!-- mobile -->
+  <div
+    class="grid md:hidden grid-cols-1 items-center justify-center space-y-5 mb-5"
+  >
+    <div class="text-center sm:px-10 text-xl">
+      Télécharger dès à présent notre application mobile
+    </div>
+    <div class="space-y-3" align="center">
+      <img
+        class="hover:cursor-pointer"
+        src="assets/appstore1.svg"
+        alt=""
+        srcset=""
+      />
+      <img
+        class="hover:cursor-pointer"
+        src="assets/google1.svg"
+        alt=""
+        srcset=""
+      />
+    </div>
+    <div class="text-gray-100 font-light text-center">
+      <span class="font-bold text-white">Decouvrez</span> et
+      <span class="font-bold text-white">reservez</span> la coiffeuse qui vous
+      correspond, en quelques clics !
+    </div>
+    <div class="" align="center">
+      <div class="font-semibold text-lg mb-5">Qui sommes nous?</div>
+      <div
+        class="hover:cursor-pointer hover:underline"
+        *ngFor="let item of items"
+      >
+        {{ item?.title }}
+      </div>
+    </div>
+    <div align="center">
+      <div class="pb-5 text-lg font-semibold">Rejoins-nous</div>
+      <div class="flex flex-row gap-5 justify-center">
+        <img
+          class="hover:cursor-pointer"
+          src="assets/fb.svg"
+          alt=""
+          srcset=""
+        />
+        <img
+          class="hover:cursor-pointer"
+          src="assets/insta.svg"
+          alt=""
+          srcset=""
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- web -->
+  <div class="hidden md:grid md:grid-cols-3">
+    <div class="col-span-1 flex flex-col items-center">
+      <img src="assets/logo.png" alt="" srcset="" />
+      <div class="text-gray-100 text-2xl font-light">
+        <span class="font-bold text-white">Decouvrez</span> et
+        <span class="font-bold text-white">reservez</span> la coiffeuse qui vous
+        correspond, en quelques clics !
+      </div>
+    </div>
+    <div class="col-span-1 flex flex-col items-center">
+      <div>
+        <div class="font-semibold text-lg mb-5">Qui sommes nous?</div>
+        <div
+          class="text-left hover:cursor-pointer hover:underline"
+          *ngFor="let item of items"
+        >
+          {{ item?.title }}
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1 flex flex-col items-center space-y-5">
+      <div class="text-center px-20 text-xl">
+        Télécharger dès à présent notre application mobile
+      </div>
+      <img
+        class="hover:cursor-pointer"
+        src="assets/appstore1.svg"
+        alt=""
+        srcset=""
+      />
+      <img
+        class="hover:cursor-pointer"
+        src="assets/google1.svg"
+        alt=""
+        srcset=""
+      />
+      <div>Rejoins-nous</div>
+      <div class="flex flex-row gap-5">
+        <img
+          class="hover:cursor-pointer"
+          src="assets/fb.svg"
+          alt=""
+          srcset=""
+        />
+        <img
+          class="hover:cursor-pointer"
+          src="assets/insta.svg"
+          alt=""
+          srcset=""
+        />
+      </div>
+    </div>
+  </div>
+  <div class="w-full text-center text-xs text-gray-300">
+    © Bigoodee 2021 tous droits réservés.
+  </div>
+</div>
