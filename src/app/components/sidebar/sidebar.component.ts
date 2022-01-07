@@ -15,10 +15,12 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Nouvelle reservation',
           open: false,
+          to: '/',
         },
         {
           title: 'Reservations',
           open: false,
+          to: '/dashboard/reservations',
         },
       ],
     },
@@ -29,10 +31,12 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Demande de coiffures',
           open: false,
+          to: '/dashboard/coiffeuse',
         },
         {
           title: 'Liste de coiffeuses',
           open: false,
+          to: '/',
         },
       ],
     },
@@ -43,10 +47,12 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Utilisateurs inscrits',
           open: false,
+          to: '/',
         },
         {
           title: 'Client ayant reserve',
           open: false,
+          to: '/',
         },
       ],
     },
@@ -57,14 +63,17 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Messages',
           open: false,
+          to: '/',
         },
         {
           title: 'Notification push',
           open: false,
+          to: '/',
         },
         {
           title: 'Tchatt cliente coiffeuse',
           open: false,
+          to: '/',
         },
       ],
     },
@@ -75,10 +84,12 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Gestion des codes promo',
           open: false,
+          to: '/',
         },
         {
           title: 'Gestion des avis clients',
           open: false,
+          to: '/',
         },
       ],
     },

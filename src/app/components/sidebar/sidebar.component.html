@@ -30,6 +30,7 @@
         [ngClass]="sub.open ? 'text-primary' : ''"
         (click)="check(); sub.open = true"
         class="hover:cursor-pointer"
+        [routerLink]="sub?.to"
       >
         {{ sub.title }}
       </div>
