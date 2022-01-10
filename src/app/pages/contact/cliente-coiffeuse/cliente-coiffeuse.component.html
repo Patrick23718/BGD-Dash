@@ -1,0 +1,19 @@
+<div class="pt-10 pb-5 px-5">
+  <div class="text-center mb-10 text-xl font-bold text-gray-500">
+    Tchat cliente/coiffeuse
+  </div>
+  <div class="flex flex-col space-y-5">
+    <div
+      *ngFor="let reservation of tchats"
+      class="grid grid-cols-4 items-center rounded-lg border border-gray-500 text-center px-5 py-2 text-sm text-gray-500"
+    >
+      <div align="center">
+        <img class="rounded-full" [src]="reservation.img" alt="" srcset="" />
+      </div>
+      <div class="text-left">{{ reservation.coiffeuse }}</div>
+      <div>{{ reservation.message }}</div>
+
+      <div class="text-sm">{{ reservation.time }}</div>
+    </div>
+  </div>
+</div>
