@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilisateursService } from 'src/app/services/utilisateurs.service';
 
 @Component({
   selector: 'app-inscrits',
@@ -7,33 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InscritsComponent implements OnInit {
   headers = ['Nom&prénom', 'Mail', 'Téléphone', 'Date', 'Ville'];
-  users = [
-    {
-      img: 'assets/profil.png',
-      nom: 'Sarah',
-      mail: 'noukimi.patrick@gmail.com',
-      tel: '0123456789',
-      date: '2022-01-02',
-      ville: 'Nantes',
-    },
-    {
-      img: 'assets/profil.png',
-      nom: 'Clarisse',
-      mail: 'clarisse@gmail.com',
-      tel: '0123456789',
-      date: '2022-01-02',
-      ville: 'Rennes',
-    },
-    {
-      img: 'assets/profil.png',
-      nom: 'Linda',
-      mail: 'mylicoco@gmail.com',
-      tel: '0123456789',
-      date: '2022-01-02',
-      ville: 'Nantes',
-    },
-  ];
-  constructor() {}
+  users: any[] = [];
+  constructor(private userService: UtilisateursService) {
+    this.userService.getAllCliente().subscribe((res: any) => {
+      this.users = res;
+      console.log(res);
+    });
+  }
 
   ngOnInit(): void {}
 }

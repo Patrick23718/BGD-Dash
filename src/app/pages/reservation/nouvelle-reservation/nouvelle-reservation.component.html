@@ -1,42 +1,86 @@
-<div class="pt-10 pb-5 px-5">
-  <div class="text-center mb-10 text-3xl font-bold text-gray-700">
-    Nouvelle reservation
+<app-header></app-header>
+<div class="grid grid-cols-4">
+  <div class="hidden md:grid md:col-span-1">
+    <app-sidebar></app-sidebar>
   </div>
-  <div class="grid grid-cols-7 mb-5">
-    <div
-      class="col-span-1 text-primary font-bold text-xl"
-      *ngFor="let header of headers"
-    >
-      {{ header }}
-    </div>
-  </div>
-  <div
-    *ngFor="let reservation of reservations"
-    class="grid grid-cols-7 items-center border border-primary px-5 py-2 text-sm text-gray-500"
-  >
-    <div>
-      <img class="rounded-full" [src]="reservation.img" alt="" srcset="" />
-    </div>
-    <div>{{ reservation.ville }}</div>
-    <div class="flex flex-col">
-      <span>{{ reservation.date | date }}</span
-      ><span>{{ reservation.plage }}</span>
-    </div>
-    <div>{{ reservation.tel }}</div>
-    <div>{{ reservation.prest }}</div>
-    <div>{{ reservation.coiffeuse }}</div>
-    <div *ngIf="reservation.status === 'AWAIT'">
-      <span class="rounded-lg px-5 py-1 bg-primary text-white">En cours</span>
-    </div>
-    <div *ngIf="reservation.status === 'ACCEPT'">
-      <span
-        class="rounded-lg px-5 py-1 text-white"
-        style="background-color: #1ea807"
-        >Confirmé</span
+  <div class="col-span-4 md:col-span-3">
+    <!-- end -->
+    <div class="pt-10 pb-5 px-5">
+      <div class="text-center mb-10 text-3xl font-bold text-gray-700">
+        Nouvelle reservation
+      </div>
+      <div class="grid grid-cols-6 mb-5">
+        <div
+          class="col-span-1 text-primary text-center font-bold text-xl"
+          *ngFor="let header of headers"
+        >
+          {{ header }}
+        </div>
+      </div>
+      <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+      <div
+        *ngFor="let reservation of reservations"
+        class="grid grid-cols-6 items-center border text-center border-primary cursor-pointer px-5 py-2 text-sm text-gray-500"
+        [routerLink]="'reservations/' + reservation._id"
       >
-    </div>
-    <div *ngIf="reservation.status === 'REFUSE'">
-      <span class="rounded-lg px-5 py-1 text-white bg-red-600">Refusé</span>
+        <div class="flex flex-row items-center space-x-5">
+          <div>
+            <img
+              class="rounded-full w-10 h-10"
+              [src]="
+                reservation.cliente.imageURL === 'default.png'
+                  ? 'assets/default.png'
+                  : 'https://firebasestorage.googleapis.com/v0/b/bigoodee-79097.appspot.com/o/profile%2F' +
+                    reservation.cliente.imageURL.split('/')[1] +
+                    '?alt=media&token=4f39ff84-15a9-4f1d-8e9a-fcc5541147bd'
+              "
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="">{{ reservation.cliente.ville }}</div>
+        </div>
+        <div class="flex flex-col">
+          <span>{{ reservation.date | date }}</span
+          ><span>{{ reservation.disponibilite.plage }}</span>
+        </div>
+        <div>{{ reservation.cliente.numero }}</div>
+        <div>{{ reservation.prestation.prestation.prestation }}</div>
+        <div>{{ reservation.coiffeuse.prenom }}</div>
+        <div *ngIf="reservation.status === 'AWAIT'">
+          <span class="rounded-lg px-5 py-1 bg-primary text-white"
+            >En cours</span
+          >
+        </div>
+        <div *ngIf="reservation.status === 'VALIDATE'">
+          <span
+            class="rounded-lg px-5 py-1 text-white"
+            style="background-color: #1ea807"
+            >Confirmé</span
+          >
+        </div>
+        <div *ngIf="reservation.status === 'REFUSE'">
+          <span class="rounded-lg px-5 py-1 text-white bg-red-600">Refusé</span>
+        </div>
+      </div>
+      <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+      <div
+        class="w-full flex felx-row space-x-5 justify-center items-center mt-10"
+      >
+        <div
+          class="cursor-pointer text-primary italic text-sm"
+          (click)="prev()"
+        >
+          Précédent
+        </div>
+        <div
+          class="cursor-pointer text-primary italic text-sm"
+          (click)="next()"
+        >
+          Suivant
+        </div>
+      </div>
     </div>
   </div>
 </div>

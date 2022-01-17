@@ -1,13 +1,26 @@
-<div class="" align="center">
-  <mat-tab-group>
-    <mat-tab label="INFORMATIONS"
-      ><app-informations></app-informations
-    ></mat-tab>
-    <mat-tab label="RÉSERVATIONS"><app-reservation></app-reservation></mat-tab>
-    <mat-tab label="AGENDA"><app-agenda></app-agenda></mat-tab>
-    <mat-tab label="MESSAGERIE"><app-messagerie></app-messagerie></mat-tab>
-    <mat-tab label="PORTE-MONNAIE"
-      ><app-porte-monnaie></app-porte-monnaie
-    ></mat-tab>
-  </mat-tab-group>
+<app-header></app-header>
+<div class="grid grid-cols-4">
+  <div class="hidden md:grid md:col-span-1">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-span-4 md:col-span-3">
+    <!-- end -->
+    <div class="" align="center">
+      <mat-tab-group>
+        <mat-tab label="AGENDA"><app-agenda [cid]="id"></app-agenda></mat-tab>
+        <mat-tab label="INFORMATIONS"
+          ><app-informations [cid]="id"></app-informations
+        ></mat-tab>
+        <mat-tab label="RÉSERVATIONS"
+          ><app-reservation [cid]="id"></app-reservation
+        ></mat-tab>
+        <mat-tab label="MESSAGERIE"
+          ><app-messagerie [cid]="id"></app-messagerie
+        ></mat-tab>
+        <mat-tab label="PORTE-MONNAIE"
+          ><app-porte-monnaie></app-porte-monnaie
+        ></mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
 </div>

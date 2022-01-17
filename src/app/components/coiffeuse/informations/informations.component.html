@@ -1,4 +1,5 @@
-<div class="my-5 w-full text-gray-500">
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="!loading" class="my-5 w-full text-gray-500">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 px-5">
     <div class="col-span-1 text-left">
       <div class="border border-primary px-5 py-2 text-xl font-bold">
@@ -8,27 +9,27 @@
         class="border border-primary px-5 py-2 grid md:grid-cols-2 grid-cols-3 justify-between"
       >
         <div class="text-left">Email</div>
-        <div class="text-left">caroline61@gmail.com</div>
+        <div class="text-left">{{ coiffeuse.email }}</div>
       </div>
       <div
         class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
       >
         <div>Téléphone</div>
-        <div>00734231794</div>
+        <div>{{ coiffeuse.numero }}</div>
       </div>
       <div
         class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
       >
-        <div class="col-span-1">Nom</div>
-        <div class="col-span-2">Mondoha</div>
+        <div>Nom</div>
+        <div>{{ coiffeuse.nom }}</div>
       </div>
       <div
         class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
       >
         <div>Prénom</div>
-        <div>Marianou</div>
+        <div>{{ coiffeuse.prenom }}</div>
       </div>
-      <div
+      <!-- <div
         class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
       >
         <div>Adresse</div>
@@ -39,12 +40,12 @@
       >
         <div>Code postal</div>
         <div>Mondoha</div>
-      </div>
+      </div> -->
       <div
         class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
       >
         <div>Ville</div>
-        <div>Nantes</div>
+        <div>{{ coiffeuse.ville }}</div>
       </div>
     </div>
 
@@ -79,20 +80,19 @@
     <div class="col-span-1 text-center">
       <div class="mt-5">Galerie</div>
       <div class="grid grid-cols-3 gap-3">
-        <div>
-          <img class="rounded-lg" src="assets/user.png" alt="" srcset="" />
-        </div>
-        <div>
-          <img class="rounded-lg" src="assets/user.png" alt="" srcset="" />
-        </div>
-        <div>
-          <img class="rounded-lg" src="assets/user.png" alt="" srcset="" />
-        </div>
-        <div>
-          <img class="rounded-lg" src="assets/user.png" alt="" srcset="" />
-        </div>
-        <div>
-          <img class="rounded-lg" src="assets/user.png" alt="" srcset="" />
+        <div *ngFor="let galerie of galeries">
+          <img
+            class="rounded-lg"
+            [src]="
+              galerie.imageURL === 'default.png'
+                ? 'assets/default.png'
+                : 'https://firebasestorage.googleapis.com/v0/b/bigoodee-79097.appspot.com/o/galerie%2F' +
+                  galerie.imageURL.split('/')[1] +
+                  '?alt=media&token=4f39ff84-15a9-4f1d-8e9a-fcc5541147bd'
+            "
+            alt=""
+            srcset=""
+          />
         </div>
       </div>
     </div>
@@ -103,33 +103,10 @@
       </div>
       <div
         class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
+        *ngFor="let prestation of prestations"
       >
-        <div class="">Tissage</div>
-        <div class="">45€</div>
-      </div>
-      <div
-        class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
-      >
-        <div class="">Tissage</div>
-        <div class="">45€</div>
-      </div>
-      <div
-        class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
-      >
-        <div class="">Tissage</div>
-        <div class="">45€</div>
-      </div>
-      <div
-        class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
-      >
-        <div class="">Tissage</div>
-        <div class="">45€</div>
-      </div>
-      <div
-        class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
-      >
-        <div class="">Tissage</div>
-        <div class="">45€</div>
+        <div class="">{{ prestation.prestation.prestation }}</div>
+        <div class="">{{ prestation.tarif }}€</div>
       </div>
     </div>
   </div>
