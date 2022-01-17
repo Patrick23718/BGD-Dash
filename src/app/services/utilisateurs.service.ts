@@ -60,4 +60,19 @@ export class UtilisateursService {
     });
     return this.httpClient.get(API_URL, { headers: headers });
   }
+
+  updateUserStatus(uid: string, status: string) {
+    const API_URL = this.SERVER_URL + `/admin/user/updatestatus/${uid}`;
+    const token = this.localStorage.get('x-access-token');
+    const headers = new HttpHeaders({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'Content-Type': 'application/json',
+      'x-access-token': `${token}`,
+    });
+    return this.httpClient.put(
+      API_URL,
+      { status: status },
+      { headers: headers }
+    );
+  }
 }

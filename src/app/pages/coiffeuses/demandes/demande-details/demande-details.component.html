@@ -16,25 +16,25 @@
             class="border border-primary px-5 py-2 grid md:grid-cols-2 grid-cols-3 justify-between"
           >
             <div class="text-left">Email</div>
-            <div class="text-left">{{ coiffeuse.email }}</div>
+            <div class="text-left">{{ coiffeuse?.email }}</div>
           </div>
           <div
             class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
           >
             <div>Téléphone</div>
-            <div>{{ coiffeuse.numero }}</div>
+            <div>{{ coiffeuse?.numero }}</div>
           </div>
           <div
             class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
           >
             <div>Nom</div>
-            <div>{{ coiffeuse.nom }}</div>
+            <div>{{ coiffeuse?.nom }}</div>
           </div>
           <div
             class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
           >
             <div>Prénom</div>
-            <div>{{ coiffeuse.prenom }}</div>
+            <div>{{ coiffeuse?.prenom }}</div>
           </div>
           <!-- <div
         class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
@@ -52,7 +52,7 @@
             class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
           >
             <div>Ville</div>
-            <div>{{ coiffeuse.ville }}</div>
+            <div>{{ coiffeuse?.ville }}</div>
           </div>
         </div>
         <div class="col-span-1 text-center">
@@ -63,8 +63,8 @@
             class="border border-primary px-5 py-2 grid grid-cols-2 justify-between"
             *ngFor="let prestation of prestations"
           >
-            <div class="">{{ prestation.prestation.prestation }}</div>
-            <div class="">{{ prestation.tarif }}€</div>
+            <div class="">{{ prestation?.prestation?.prestation }}</div>
+            <div class="">{{ prestation?.tarif }}€</div>
           </div>
         </div>
 
@@ -92,24 +92,30 @@
           <div class="border border-primary">
             <div class="text-center px-5 py-3">Biographie</div>
             <div class="text-center border-t px-5 py-3 border-primary">
-              {{ coiffeuse.biographie }}
+              {{ coiffeuse?.biographie }}
             </div>
           </div>
         </div>
         <div class="flex flex-col justify-center items-center space-y-3">
           <div
             style="background-color: #1ea807; color: white"
-            class="rounded-lg py-2 px-5 text-center"
+            class="rounded-lg py-2 px-5 text-center cursor-pointer"
+            matRipple
+            (click)="validate()"
           >
-            Valider ce compte
+            <span>Valider ce compte</span>
           </div>
           <div
-            class="rounded-lg py-2 px-5 text-center border border-primary text-primary"
+            class="rounded-lg py-2 px-5 cursor-pointer text-center border border-primary text-primary"
+            matRipple
+            matRippleColor="#ff3a7749"
+            (click)="delete()"
           >
             Supprimer ce compte
           </div>
           <div
-            class="flex flex-row rounded-lg py-2 px-5 items-center space-x-3 text-center bg-primary-op text-primary"
+            class="flex flex-row rounded-lg py-2 px-5 cursor-pointer items-center space-x-3 text-center bg-primary-op text-primary"
+            matRipple
           >
             <img src="assets/msg.svg" alt="" />
             Contacter

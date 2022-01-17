@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoiffeusesService } from 'src/app/services/coiffeuses.service';
+import { UtilisateursService } from 'src/app/services/utilisateurs.service';
 
 @Component({
   selector: 'app-demande-details',
@@ -15,6 +16,7 @@ export class DemandeDetailsComponent implements OnInit {
   loading = true;
   constructor(
     private coiffeuseService: CoiffeusesService,
+    private userService: UtilisateursService,
     private activatedRoute: ActivatedRoute // private reservationService: ReservationsService, // private userCoiffeuse: UtilisateursService
   ) {
     this.activatedRoute.params.subscribe((paramsId) => {
@@ -41,5 +43,25 @@ export class DemandeDetailsComponent implements OnInit {
             });
         });
     });
+  }
+
+  validate() {
+    this.loading = true;
+    this.userService
+      .updateUserStatus(this.id, 'VALIDATE')
+      .subscribe((res: any) => {
+        console.log(res);
+        this.loading = false;
+      });
+  }
+
+  delete() {
+    this.loading = true;
+    this.userService
+      .updateUserStatus(this.id, 'DELETE')
+      .subscribe((res: any) => {
+        this.loading = false;
+        console.log(res);
+      });
   }
 }
