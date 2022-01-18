@@ -1,0 +1,28 @@
+<div class="grid grid-cols-3 mt-5 mb-5 justify-center items-cente">
+  <div
+    class="col-span-1 font-bold text-md text-center"
+    *ngFor="let header of headers"
+  >
+    {{ header }}
+  </div>
+</div>
+<div class="border border-gray-500 rounded-md mx-5">
+  <div
+    *ngFor="let code of codes"
+    class="border-b border-gray-500 grid grid-cols-3 items-center text-center"
+  >
+    <div class="text-primary">{{ code?.code }} {{ code?.amount }}%</div>
+    <div>{{ code?.createdAt | date: "d-MM-y" }}</div>
+    <div class="flex flex-row justify-end mx-5 my-3 co items-center gap-4">
+      {{ code?.expireDate }}
+      <div
+        class="text-primary border border-primary rounded-md px-2 py-1 cursor-pointer"
+        matRipple
+        matRippleColor="#FF3A7749"
+        (click)="deleteCoupon(code._id)"
+      >
+        Supprimer
+      </div>
+    </div>
+  </div>
+</div>

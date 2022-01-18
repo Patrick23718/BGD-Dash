@@ -84,7 +84,7 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Gestion des codes promo',
           open: false,
-          to: '/',
+          to: '/dashboard/promo',
         },
         {
           title: 'Gestion des avis clients',

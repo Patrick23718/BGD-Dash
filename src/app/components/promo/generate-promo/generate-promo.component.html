@@ -1,0 +1,41 @@
+<form>
+  <div
+    class="grid grid-cols-2 text-gray-500 items-center space-y-5 mx-10 text-left"
+  >
+    <div class="text-xl text-left">Format du code promo</div>
+    <div>
+      <input
+        class="border border-gray-300 shadow-none outline-none h-10 text-xl mx-5 rounded-lg text-center text-primary font-bold"
+        type="text"
+        value="En %"
+        readonly
+      />
+    </div>
+    <div class="text-xl text-left">Valeur du code promo</div>
+    <div>
+      <input
+        class="border border-gray-300 shadow-none outline-none h-10 text-xl mx-5 rounded-lg text-center text-primary font-bold"
+        type="number"
+        [(ngModel)]="amount"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <div class="text-xl text-left">Utilisation (Validité)</div>
+    <div>
+      <input
+        class="border border-gray-300 shadow-none outline-none h-10 text-xl mx-5 rounded-lg text-center text-primary font-bold"
+        type="date"
+        [(ngModel)]="date"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+  </div>
+  <div class="flex justify-center p-5">
+    <div
+      class="text-white bg-primary rounded-md px-5 py-1 cursor-pointer"
+      (click)="createCoupon()"
+    >
+      Générer le code
+    </div>
+  </div>
+</form>

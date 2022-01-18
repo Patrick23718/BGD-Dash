@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { CodePromoComponent } from './pages/code-promo/code-promo.component';
 import { CoiffeuseComponent } from './pages/coiffeuses/coiffeuse/coiffeuse.component';
 import { DemandeDetailsComponent } from './pages/coiffeuses/demandes/demande-details/demande-details.component';
 import { DemandesComponent } from './pages/coiffeuses/demandes/demandes.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: NouvelleReservationComponent },
+      { path: 'promo', component: CodePromoComponent },
       {
         path: 'reservations/:id',
         resolve: {

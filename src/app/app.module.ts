@@ -45,6 +45,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { ListeCoiffeusesComponent } from './pages/coiffeuses/liste-coiffeuses/liste-coiffeuses.component';
+import { ReductionsComponent } from './components/promo/reductions/reductions.component';
+import { GeneratePromoComponent } from './components/promo/generate-promo/generate-promo.component';
+import { CodePromoComponent } from './pages/code-promo/code-promo.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -90,6 +93,9 @@ const materialComponents = [
     MessagesComponent,
     LoginComponent,
     ListeCoiffeusesComponent,
+    ReductionsComponent,
+    GeneratePromoComponent,
+    CodePromoComponent,
   ],
   imports: [
     BrowserModule,

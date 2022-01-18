@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="grid grid-cols-4">
+  <div class="hidden md:grid md:col-span-1">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-span-4 md:col-span-3">
+    <!-- end -->
+    <div class="my-5 w-full text-gray-500">
+      <div class="text-center mb-10 text-xl font-bold text-gray-500">
+        Gestion des code promotion
+      </div>
+      <div class="border border-gray-500 rounded-lg mx-5">
+        <div
+          class="border-b border-gray-500 py-1 px-3 flex flex-row justify-end space-x-3"
+        >
+          <div
+            [class]="
+              change
+                ? 'text-white bg-primary rounded-md px-5 py-1 cursor-pointer'
+                : 'text-primary border border-primary rounded-md px-5 py-1 cursor-pointer'
+            "
+            (click)="change = true"
+          >
+            Liste des codes promos
+          </div>
+          <div
+            [class]="
+              change
+                ? 'text-primary border border-primary rounded-md px-5 py-1 cursor-pointer'
+                : 'text-white bg-primary rounded-md px-5 py-1 cursor-pointer'
+            "
+            (click)="change = false"
+          >
+            Générer le code promo
+          </div>
+        </div>
+
+        <div *ngIf="change">
+          <app-reductions></app-reductions>
+        </div>
+        <div *ngIf="!change">
+          <app-generate-promo></app-generate-promo>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
