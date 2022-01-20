@@ -1,19 +1,46 @@
-<div class="pt-10 pb-5 px-5">
-  <div class="text-center mb-10 text-xl font-bold text-gray-500">
-    Tchat cliente/coiffeuse
+<app-header></app-header>
+<div class="grid grid-cols-4">
+  <div class="hidden md:grid md:col-span-1">
+    <app-sidebar></app-sidebar>
   </div>
-  <div class="flex flex-col space-y-5">
-    <div
-      *ngFor="let reservation of tchats"
-      class="grid grid-cols-4 items-center rounded-lg border border-gray-500 text-center px-5 py-2 text-sm text-gray-500"
-    >
-      <div align="center">
-        <img class="rounded-full" [src]="reservation.img" alt="" srcset="" />
+  <div class="col-span-4 md:col-span-3">
+    <!-- end -->
+    <div class="pt-10 pb-5 px-5">
+      <div class="text-center mb-10 text-xl font-bold text-gray-500">
+        Tchat cliente/coiffeuse
       </div>
-      <div class="text-left">{{ reservation.coiffeuse }}</div>
-      <div>{{ reservation.message }}</div>
+      <div class="flex flex-col space-y-5">
+        <div
+          *ngFor="let reservation of messages"
+          [ngClass]="reservation ? '' : 'none'"
+          class="grid grid-cols-3 items-center rounded-lg border border-gray-500 text-center px-5 py-2 text-sm text-gray-500 cursor-pointer"
+          matRipple
+          [routerLink]="'details/' + reservation?.coiffeuse?._id"
+        >
+          <div class="flex flex-row space-x-5 items-center">
+            <div>
+              <img
+                class="rounded-full h-10 w-10"
+                [src]="
+                  reservation?.coiffeuse?.imageURL === 'default.png'
+                    ? 'assets/default.png'
+                    : 'https://firebasestorage.googleapis.com/v0/b/bigoodee-79097.appspot.com/o/profile%2F' +
+                      reservation?.coiffeuse?.imageURL.split('/')[1] +
+                      '?alt=media&token=4f39ff84-15a9-4f1d-8e9a-fcc5541147bd'
+                "
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div class="text-left">{{ reservation?.coiffeuse?.prenom }}</div>
+          </div>
+          <div class="text-center">{{ reservation?.message }}</div>
 
-      <div class="text-sm">{{ reservation.time }}</div>
+          <div class="text-sm text-right">
+            {{ reservation?.createdAt | date: "d/MM/y à hh:mm":"GMT+1":"fr" }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

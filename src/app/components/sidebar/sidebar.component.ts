@@ -89,7 +89,7 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Gestion des avis clients',
           open: false,
-          to: '/',
+          to: '/avis',
         },
       ],
     },

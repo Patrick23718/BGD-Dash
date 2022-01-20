@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -48,9 +49,19 @@ import { ListeCoiffeusesComponent } from './pages/coiffeuses/liste-coiffeuses/li
 import { ReductionsComponent } from './components/promo/reductions/reductions.component';
 import { GeneratePromoComponent } from './components/promo/generate-promo/generate-promo.component';
 import { CodePromoComponent } from './pages/code-promo/code-promo.component';
+import { AvisComponent } from './pages/avis/avis.component';
+import { AvisDetailsComponent } from './components/avis-details/avis-details.component';
+import { DetailsClienteCoiffeuseComponent } from './pages/contact/cliente-coiffeuse/details-cliente-coiffeuse/details-cliente-coiffeuse.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
+
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
+const config: SocketIoConfig = {
+  url: environment.serverURL,
+  options: {},
+};
 
 const materialComponents = [
   MatToolbarModule,
@@ -68,6 +79,7 @@ const materialComponents = [
   MatNativeDateModule,
   MatSlideToggleModule,
   MatProgressSpinnerModule,
+  MatDialogModule,
 ];
 
 @NgModule({
@@ -96,6 +108,9 @@ const materialComponents = [
     ReductionsComponent,
     GeneratePromoComponent,
     CodePromoComponent,
+    AvisComponent,
+    AvisDetailsComponent,
+    DetailsClienteCoiffeuseComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +119,7 @@ const materialComponents = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SocketIoModule.forRoot(config),
     materialComponents,
   ],
   exports: [materialComponents],

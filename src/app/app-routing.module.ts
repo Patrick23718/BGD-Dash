@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { AvisComponent } from './pages/avis/avis.component';
 import { CodePromoComponent } from './pages/code-promo/code-promo.component';
 import { CoiffeuseComponent } from './pages/coiffeuses/coiffeuse/coiffeuse.component';
 import { DemandeDetailsComponent } from './pages/coiffeuses/demandes/demande-details/demande-details.component';
 import { DemandesComponent } from './pages/coiffeuses/demandes/demandes.component';
 import { ListeCoiffeusesComponent } from './pages/coiffeuses/liste-coiffeuses/liste-coiffeuses.component';
 import { ClienteCoiffeuseComponent } from './pages/contact/cliente-coiffeuse/cliente-coiffeuse.component';
+import { DetailsClienteCoiffeuseComponent } from './pages/contact/cliente-coiffeuse/details-cliente-coiffeuse/details-cliente-coiffeuse.component';
 import { MessagesComponent } from './pages/contact/messages/messages.component';
 import { NotificationPushComponent } from './pages/contact/notification-push/notification-push.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -25,6 +27,7 @@ const routes: Routes = [
     children: [
       { path: '', component: NouvelleReservationComponent },
       { path: 'promo', component: CodePromoComponent },
+      { path: 'avis', component: AvisComponent },
       {
         path: 'reservations/:id',
         resolve: {
@@ -65,7 +68,16 @@ const routes: Routes = [
         children: [
           { path: 'message', component: MessagesComponent },
           { path: 'notification-push', component: NotificationPushComponent },
-          { path: 'cliente-coiffeuse', component: ClienteCoiffeuseComponent },
+          {
+            path: 'cliente-coiffeuse',
+            children: [
+              { path: '', component: ClienteCoiffeuseComponent },
+              {
+                path: 'details/:cid',
+                component: DetailsClienteCoiffeuseComponent,
+              },
+            ],
+          },
         ],
       },
     ],

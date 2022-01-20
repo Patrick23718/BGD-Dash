@@ -317,3 +317,25 @@ $altTheme: (
 .border-primary {
   border-color: #ff3a77;
 }
+
+.bg-primary-opp {
+  background-color: rgba($color: #ff3e79, $alpha: 0.1) !important;
+}
+.border-secondary {
+  border-color: #ffb156 !important;
+}
+
+.bg-secondary {
+  background-color: #ffb156 !important;
+}
+
+.text-secondary {
+  color: #ffb156 !important;
+}
+
+.bg-secondary-op {
+  background-color: rgba($color: #ffb156, $alpha: 0.25) !important;
+}
+.none {
+  display: none;
+}
