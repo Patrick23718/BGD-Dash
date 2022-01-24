@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverURL: 'http://localhost:3000',
-  // serverURL: 'https://api-bgd.herokuapp.com',
+  // serverURL: 'http://localhost:3000',
+  serverURL: 'https://api-bgd.herokuapp.com',
 };
 
 /*

@@ -1,0 +1,17 @@
+.height {
+  height: calc(100vh - 250px);
+}
+.heighte {
+  height: calc(100vh - 305px);
+}
+.recieve {
+  background: rgba($color: #ffb156, $alpha: 0.1) !important;
+
+  max-width: 75%;
+}
+
+.send {
+  background: rgba($color: #ff3e79, $alpha: 0.1) !important;
+
+  max-width: 75%;
+}
