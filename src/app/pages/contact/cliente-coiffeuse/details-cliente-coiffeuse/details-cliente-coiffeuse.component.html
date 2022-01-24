@@ -74,6 +74,7 @@
                 srcset=""
               /> -->
                   {{ msg.message }}
+                  <!-- {{ msg.createdAt | date: "d-MM-y  hh:mm:ss" }} -->
                 </div>
               </div>
               <div class="flex justify-end" *ngIf="msg?.fromId?._id === cid">
@@ -81,6 +82,7 @@
                   class="min-w-min py-2 px-3 rounded-lg send whitespace-pre-wrap"
                 >
                   {{ msg.message }}
+                  <!-- {{ msg.createdAt | date: "d-MM-y  hh:mm:ss" }} -->
                 </div>
               </div>
             </div>
