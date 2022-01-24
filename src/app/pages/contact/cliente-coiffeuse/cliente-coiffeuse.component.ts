@@ -53,7 +53,7 @@ export class ClienteCoiffeuseComponent implements OnInit {
       //     this.messages.push(elt);
       //   }
       // });
-      const array = data.map((elt: any) => {
+      const array = data.reverse().map((elt: any) => {
         var id;
         if (elt.toId.role === 'coiffeuse') {
           id = {
