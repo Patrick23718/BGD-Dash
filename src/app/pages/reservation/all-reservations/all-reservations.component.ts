@@ -20,17 +20,22 @@ export class AllReservationsComponent implements OnInit {
   getReservation(page: number, limit: number = 10) {
     if (page > 0) {
       this.reservationReservation
-        .getReservation(page, limit)
+        .getReservationstatus(page, limit)
         .subscribe((res: any) => {
           console.log(res);
           this.reservations = res.data;
           this.page = res.currentPage;
           console.log(this.page);
-          // this.loading = false;
         });
     } else {
       this.page = 1;
     }
+  }
+
+  cancelReservation(id: string) {
+    this.reservationReservation.reservationRefuse(id).subscribe((res: any) => {
+      this.getReservation(this.page);
+    });
   }
 
   next() {

@@ -41,27 +41,28 @@
           *ngFor="let coiffeuse of reservations"
           class="grid grid-cols-7 items-center text-center justify-center border rounded-lg mb-5 px-5 py-2 text-sm text-gray-500"
         >
-          <div class="flex flex-row gap-5 items-center">
+          <div class="flex flex-col gap-1 items-center">
             <img
               class="rounded-full w-10 h-10"
               [src]="
                 coiffeuse.imageURL === 'default.png'
                   ? 'assets/default.png'
                   : 'https://firebasestorage.googleapis.com/v0/b/bigoodee-79097.appspot.com/o/profile%2F' +
-                    coiffeuse.imageURL.split('/')[1] +
+                    coiffeuse?.cliente?.imageURL.split('/')[1] +
                     '?alt=media&token=4f39ff84-15a9-4f1d-8e9a-fcc5541147bd'
               "
               alt=""
               srcset=""
             />
-            <div>{{ coiffeuse?.nom }} {{ coiffeuse?.prenom }}</div>
+            <div>{{ coiffeuse?.cliente?.prenom }} {{ coiffeuse?.prenom }}</div>
           </div>
 
-          <div>{{ coiffeuse?.ville }}</div>
-          <div>{{ coiffeuse?.numero }}</div>
+          <div>{{ coiffeuse?.cliente?.ville }}</div>
+          <div>{{ coiffeuse?.cliente?.email }}</div>
           <div>
             {{ coiffeuse?.createdAt | date: "d-MM-y" }}
           </div>
+          <div>{{ coiffeuse?.prestation?.prestation?.prestation }}</div>
           <div class="flex justify-center">
             <span
               matRipple
@@ -71,14 +72,34 @@
               <img src="assets/msg.svg" alt="" srcset="" />
             </span>
           </div>
-          <div class="flex justify-center">
+          <div class="flex justify-center gap-2 items-center">
             <span
-              class="rounded-lg px-5 py-1 border-2 border-primary text-primary cursor-pointer"
+              class="rounded-lg px-1 py-1 border-2 border-primary text-primary cursor-pointer"
               matRipple
               matRippleColor="#ff3a7749"
-              [routerLink]="'details/' + coiffeuse._id"
-              >Voir</span
+              (click)="cancelReservation(coiffeuse._id)"
+              >Annuler</span
             >
+            <mat-label></mat-label>
+            <mat-select>
+              <mat-option>Demander un avis client</mat-option>
+            </mat-select>
+          </div>
+        </div>
+        <div
+          class="w-full flex felx-row space-x-5 justify-center items-center mt-10"
+        >
+          <div
+            class="cursor-pointer text-primary italic text-sm"
+            (click)="prev()"
+          >
+            Précédent
+          </div>
+          <div
+            class="cursor-pointer text-primary italic text-sm"
+            (click)="next()"
+          >
+            Suivant
           </div>
         </div>
       </div>

@@ -1,1 +1,50 @@
-<p>notification-push works!</p>
+<app-header></app-header>
+<div class="grid grid-cols-4">
+  <div class="hidden md:grid md:col-span-1">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-span-4 md:col-span-3">
+    <!-- end -->
+    <div class="my-5 w-full text-gray-500">
+      <div class="text-center mb-10 text-xl font-bold text-gray-500">
+        Notification push
+      </div>
+
+      <div class="mx-5 border border-gray-300 rounded-lg">
+        <div class="flex justify-end border-b border-gray-300">
+          <div
+            class="text-white bg-primary rounded-md px-5 py-1 cursor-pointer my-1 mx-5"
+          >
+            Publier le message
+          </div>
+        </div>
+        <div class="grid grid-cols-2 px-10 py-10 gap-5">
+          <div class="flex flex-col">
+            <p>Titre</p>
+            <input
+              class="border border-gray-300 rounded-lg shadow-none outline-none h-11 px-5"
+            />
+          </div>
+          <div class="flex flex-col">
+            <p class="text-primary">Destinataires</p>
+            <select
+              name=""
+              id=""
+              class="border border-gray-300 rounded-lg shadow-none outline-none h-11 px-5 text-white bg-gray-400"
+            >
+              <option value="">Tous les utilisateurs</option>
+            </select>
+          </div>
+          <div class="flex flex-col">
+            <p>Message</p>
+            <textarea
+              class="border border-gray-300 rounded-lg shadow-none outline-none px-5"
+              rows="5"
+              cols="5"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -27,6 +27,29 @@ export class ReservationsService {
     return this.httpClient.get(API_URL, { headers: headers });
   }
 
+  reservationRefuse(id: string) {
+    const token = this.localStorage.get('x-access-token');
+    const API_URL = this.SERVER_URL + `/admin/refuse/reservation/${id}`;
+    const headers = new HttpHeaders({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'Content-Type': 'application/json',
+      'x-access-token': `${token}`,
+    });
+    return this.httpClient.put(API_URL, {}, { headers: headers });
+  }
+
+  getReservationstatus(page: number = 1, limit: number = 10) {
+    const token = this.localStorage.get('x-access-token');
+    const API_URL =
+      this.SERVER_URL + `/admin/reservation/status?page=${page}&limit=${limit}`;
+    const headers = new HttpHeaders({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'Content-Type': 'application/json',
+      'x-access-token': `${token}`,
+    });
+    return this.httpClient.get(API_URL, { headers: headers });
+  }
+
   getReservationById(id: string) {
     const token = this.localStorage.get('x-access-token');
     const API_URL = this.SERVER_URL + `/admin/reservation/${id}`;

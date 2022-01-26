@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
             this.localstorage.set('x-access-token', res.accessToken);
             this.localstorage.set(
               'utilisateur',
-              JSON.stringify({ role: res.role })
+              JSON.stringify({ role: res.role, id: res.id })
             );
             this.router.navigate(['dashboard']);
           }
