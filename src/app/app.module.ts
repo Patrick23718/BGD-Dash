@@ -58,6 +58,7 @@ registerLocaleData(localeFr, 'fr');
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
+import { AllReservationsComponent } from './pages/reservation/all-reservations/all-reservations.component';
 const config: SocketIoConfig = {
   url: environment.serverURL,
   options: {},
@@ -111,6 +112,7 @@ const materialComponents = [
     AvisComponent,
     AvisDetailsComponent,
     DetailsClienteCoiffeuseComponent,
+    AllReservationsComponent,
   ],
   imports: [
     BrowserModule,

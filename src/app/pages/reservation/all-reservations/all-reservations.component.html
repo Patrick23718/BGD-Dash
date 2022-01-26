@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="grid grid-cols-4">
+  <div class="hidden md:grid md:col-span-1">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-span-4 md:col-span-3">
+    <!-- end -->
+    <div class="my-5 w-full text-gray-500">
+      <div class="text-center mb-10 text-xl font-bold text-gray-500">
+        Demandes coiffeuses
+      </div>
+      <div class="px-5">
+        <!-- <div class="flex flex-row space-x-5 mb-5">
+      <div>Recherche</div>
+      <div>
+        <select
+          placeholder="Par nom"
+          class="px-3 py-1 border border-primary rounded-l-md"
+        >
+          <option value="">Par nom</option>
+          <option>test</option>
+        </select>
+        <select
+          placeholder="Par nom"
+          class="px-3 py-1 border border-primary rounded-r-md"
+        >
+          <option value="">Par ville</option>
+          <option>test</option>
+        </select>
+      </div>
+    </div> -->
+        <div class="grid grid-cols-7 mb-5 justify-center items-center">
+          <div
+            class="col-span-1 font-bold text-md text-center"
+            *ngFor="let header of headers"
+          >
+            {{ header }}
+          </div>
+        </div>
+        <div
+          *ngFor="let coiffeuse of reservations"
+          class="grid grid-cols-7 items-center text-center justify-center border rounded-lg mb-5 px-5 py-2 text-sm text-gray-500"
+        >
+          <div class="flex flex-row gap-5 items-center">
+            <img
+              class="rounded-full w-10 h-10"
+              [src]="
+                coiffeuse.imageURL === 'default.png'
+                  ? 'assets/default.png'
+                  : 'https://firebasestorage.googleapis.com/v0/b/bigoodee-79097.appspot.com/o/profile%2F' +
+                    coiffeuse.imageURL.split('/')[1] +
+                    '?alt=media&token=4f39ff84-15a9-4f1d-8e9a-fcc5541147bd'
+              "
+              alt=""
+              srcset=""
+            />
+            <div>{{ coiffeuse?.nom }} {{ coiffeuse?.prenom }}</div>
+          </div>
+
+          <div>{{ coiffeuse?.ville }}</div>
+          <div>{{ coiffeuse?.numero }}</div>
+          <div>
+            {{ coiffeuse?.createdAt | date: "d-MM-y" }}
+          </div>
+          <div class="flex justify-center">
+            <span
+              matRipple
+              matRippleColor="#ff3a7749"
+              class="px-2 py-1 rounded-lg cursor-pointer"
+            >
+              <img src="assets/msg.svg" alt="" srcset="" />
+            </span>
+          </div>
+          <div class="flex justify-center">
+            <span
+              class="rounded-lg px-5 py-1 border-2 border-primary text-primary cursor-pointer"
+              matRipple
+              matRippleColor="#ff3a7749"
+              [routerLink]="'details/' + coiffeuse._id"
+              >Voir</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

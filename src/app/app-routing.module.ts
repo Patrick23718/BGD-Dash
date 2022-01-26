@@ -12,6 +12,7 @@ import { DetailsClienteCoiffeuseComponent } from './pages/contact/cliente-coiffe
 import { MessagesComponent } from './pages/contact/messages/messages.component';
 import { NotificationPushComponent } from './pages/contact/notification-push/notification-push.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AllReservationsComponent } from './pages/reservation/all-reservations/all-reservations.component';
 import { NouvelleReservationComponent } from './pages/reservation/nouvelle-reservation/nouvelle-reservation.component';
 import { ReservationsComponent } from './pages/reservation/reservations/reservations.component';
 import { AyantReserveeComponent } from './pages/utilisateurs/ayant-reservee/ayant-reservee.component';
@@ -35,13 +36,13 @@ const routes: Routes = [
         },
         component: ReservationsComponent,
       },
-      // {
-      //   path: 'reservations',
-      //   // resolve: {
-      //   //   reservation: ReservationResolver,
-      //   // },
-      //   // component: ReservationComponent,
-      // },
+      {
+        path: 'reservations',
+        // resolve: {
+        //   reservation: ReservationResolver,
+        // },
+        component: AllReservationsComponent,
+      },
       {
         path: 'coiffeuse',
         children: [
