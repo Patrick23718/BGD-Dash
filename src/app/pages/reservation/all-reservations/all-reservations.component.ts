@@ -10,6 +10,8 @@ export class AllReservationsComponent implements OnInit {
   headers = ['Nom&prénom', 'Ville', 'Mail', 'Date', 'Coiffures', 'Contact', ''];
   reservations: any[] = [{}];
   page = 1;
+  ville = '';
+  prenom = '';
 
   constructor(private reservationReservation: ReservationsService) {}
 
@@ -17,10 +19,14 @@ export class AllReservationsComponent implements OnInit {
     this.getReservation(1);
   }
 
-  getReservation(page: number, limit: number = 10) {
+  Filter() {
+    this.getReservation(1);
+  }
+
+  getReservation(page: number, limit: number = 1000) {
     if (page > 0) {
       this.reservationReservation
-        .getReservationstatus(page, limit)
+        .getReservationstatus(page, limit, this.prenom, this.ville)
         .subscribe((res: any) => {
           console.log(res);
           this.reservations = res.data;

@@ -7,28 +7,26 @@
     <!-- end -->
     <div class="my-5 w-full text-gray-500">
       <div class="text-center mb-10 text-xl font-bold text-gray-500">
-        Demandes coiffeuses
+        Réservations
       </div>
       <div class="px-5">
-        <!-- <div class="flex flex-row space-x-5 mb-5">
-      <div>Recherche</div>
-      <div>
-        <select
-          placeholder="Par nom"
-          class="px-3 py-1 border border-primary rounded-l-md"
-        >
-          <option value="">Par nom</option>
-          <option>test</option>
-        </select>
-        <select
-          placeholder="Par nom"
-          class="px-3 py-1 border border-primary rounded-r-md"
-        >
-          <option value="">Par ville</option>
-          <option>test</option>
-        </select>
-      </div>
-    </div> -->
+        <div class="flex flex-row space-x-5 mb-5">
+          <div>Recherche</div>
+          <div>
+            <input
+              placeholder="Par prénom"
+              class="px-3 py-1 border border-primary rounded-l-md"
+              [(ngModel)]="prenom"
+              (keyup)="Filter()"
+            />
+            <input
+              placeholder="Par ville"
+              [(ngModel)]="ville"
+              (keyup)="Filter()"
+              class="px-3 py-1 border border-primary rounded-r-md"
+            />
+          </div>
+        </div>
         <div class="grid grid-cols-7 mb-5 justify-center items-center">
           <div
             class="col-span-1 font-bold text-md text-center"
@@ -40,6 +38,7 @@
         <div
           *ngFor="let coiffeuse of reservations"
           class="grid grid-cols-7 items-center text-center justify-center border rounded-lg mb-5 px-5 py-2 text-sm text-gray-500"
+          [ngClass]="coiffeuse.cliente ? '' : 'none'"
         >
           <div class="flex flex-col gap-1 items-center">
             <img

@@ -23,8 +23,9 @@ export class UtilisateursService {
     });
   }
 
-  getAllCoiffeuse() {
-    const API_URL = this.SERVER_URL + '/users/coiffeuses';
+  getAllCoiffeuse(ville: string = '', nom: string = '') {
+    const API_URL =
+      this.SERVER_URL + `/users/coiffeuses?ville=${ville}&nom=${nom}`;
     return this.httpClient.get(API_URL);
   }
 

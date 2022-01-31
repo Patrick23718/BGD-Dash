@@ -9,6 +9,8 @@ import { UtilisateursService } from 'src/app/services/utilisateurs.service';
 export class AyantReserveeComponent implements OnInit {
   headers = ['Nom&prénom', 'Mail', 'Téléphone', 'Date', 'Ville', 'Coiffeuses'];
   users: any[] = [];
+  ville = '';
+  prenom = '';
   constructor(private userService: UtilisateursService) {
     this.userService.getAllClienteReserve().subscribe((res: any) => {
       console.log(res);
@@ -28,4 +30,10 @@ export class AyantReserveeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  Filter() {
+    this.getCoiffeuses();
+  }
+
+  getCoiffeuses() {}
 }

@@ -38,10 +38,16 @@ export class ReservationsService {
     return this.httpClient.put(API_URL, {}, { headers: headers });
   }
 
-  getReservationstatus(page: number = 1, limit: number = 10) {
+  getReservationstatus(
+    page: number = 1,
+    limit: number = 10,
+    nom: string = '',
+    ville: string = ''
+  ) {
     const token = this.localStorage.get('x-access-token');
     const API_URL =
-      this.SERVER_URL + `/admin/reservation/status?page=${page}&limit=${limit}`;
+      this.SERVER_URL +
+      `/admin/reservation/status?page=${page}&limit=${limit}&nom=${nom}&ville=${ville}`;
     const headers = new HttpHeaders({
       // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',

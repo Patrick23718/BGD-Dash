@@ -9,12 +9,24 @@ import { UtilisateursService } from 'src/app/services/utilisateurs.service';
 export class ListeCoiffeusesComponent implements OnInit {
   headers = ['Nom&prénom', 'Mail', 'Téléphone', 'Action'];
   reservations: any[] = [];
+  ville = '';
+  prenom = '';
   constructor(private userService: UtilisateursService) {
-    this.userService.getAllCoiffeuse().subscribe((res: any) => {
-      this.reservations = res;
-      console.log(this.reservations);
-    });
+    this.getCoiffeuses();
   }
 
   ngOnInit(): void {}
+
+  Filter() {
+    this.getCoiffeuses();
+  }
+
+  getCoiffeuses() {
+    this.userService
+      .getAllCoiffeuse(this.ville, this.prenom)
+      .subscribe((res: any) => {
+        this.reservations = res;
+        console.log(this.reservations);
+      });
+  }
 }

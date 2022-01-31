@@ -35,8 +35,9 @@ export class CoiffeusesService {
     return this.httpClient.get(API_URL);
   }
 
-  getAwaitCoiffeuse() {
-    const API_URL = this.SERVER_URL + `/admin/users/coiffeuses`;
+  getAwaitCoiffeuse(nom: string = '', ville: string = '') {
+    const API_URL =
+      this.SERVER_URL + `/admin/users/coiffeuses?ville=${ville}&nom=${nom}`;
     const token = this.localStorage.get('x-access-token');
     const headers = new HttpHeaders({
       // eslint-disable-next-line @typescript-eslint/naming-convention

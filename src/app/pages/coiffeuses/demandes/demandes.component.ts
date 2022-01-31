@@ -11,13 +11,24 @@ export class DemandesComponent implements OnInit {
   selected: Date = new Date(Date.now());
   headers = ['Nom&prénom', 'Ville', 'Téléphone', 'Date', 'Contact'];
   coiffeuses: any[] = [];
+  ville = '';
+  prenom = '';
 
   constructor(private coiffeuseService: CoiffeusesService) {
-    this.coiffeuseService.getAwaitCoiffeuse().subscribe((res: any) => {
-      this.coiffeuses = res;
-      console.log(this.coiffeuses);
-    });
+    this.getCoiffeuses();
+  }
+  Filter() {
+    this.getCoiffeuses();
   }
 
   ngOnInit(): void {}
+
+  getCoiffeuses() {
+    this.coiffeuseService
+      .getAwaitCoiffeuse(this.prenom, this.ville)
+      .subscribe((res: any) => {
+        this.coiffeuses = res;
+        console.log(this.coiffeuses);
+      });
+  }
 }

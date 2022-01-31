@@ -14,6 +14,24 @@
         <div class="flex flex-row space-x-5 mb-5">
           <div>Recherche</div>
           <div>
+            <input
+              placeholder="Par prénom"
+              class="px-3 py-1 border border-primary rounded-l-md"
+              [(ngModel)]="prenom"
+              (keyup)="Filter()"
+            />
+            <input
+              placeholder="Par ville"
+              [(ngModel)]="ville"
+              (keyup)="Filter()"
+              class="px-3 py-1 border border-primary rounded-r-md"
+            />
+          </div>
+        </div>
+
+        <!-- <div class="flex flex-row space-x-5 mb-5">
+          <div>Recherche</div>
+          <div>
             <select
               placeholder="Par nom"
               class="px-3 py-1 border border-primary rounded-l-md"
@@ -29,7 +47,7 @@
               <option>test</option>
             </select>
           </div>
-        </div>
+        </div> -->
         <div class="grid grid-cols-4 mb-5 text-center">
           <div
             class="col-span-1 font-bold text-md"
